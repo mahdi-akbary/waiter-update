@@ -1,23 +1,6 @@
-<mat-drawer-container autosize>
-  <mat-drawer #drawer mode="side"
-              [ngClass]="{'close-state' : isClosed, 'open-state' : !isClosed}"
-              [opened]="!isClosed"
-              (closedStart)="isClosed = true"
-              (openedStart)="isClosed = false">
-    <div class="drawer-title" [ngClass]="{'drawer-title-mini-state': isClosed}">
-      <div class="name">
-        <span class="name-icon" (click)="drawer.toggle()">{{nameIcon}}</span>
-        <span class="name-text">{{title}}</span>
-      </div>
-      <mat-icon (click)="drawer.toggle()">menu</mat-icon>
-    </div>
-    <app-list-options [isClosed]="isClosed"></app-list-options>
-  </mat-drawer>
-  <mat-drawer-content [ngClass]="{'margin-left-5': isClosed}">
-    <app-header></app-header>
-    <app-banner></app-banner>
-    <div class="main-content">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-drawer-content>
-</mat-drawer-container>
+<app-header></app-header>
+<app-list-options></app-list-options>
+<div class="outlet">
+  <router-outlet></router-outlet>
+</div>
+

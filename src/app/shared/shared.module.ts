@@ -18,6 +18,7 @@ import {ViewElementComponent} from "./components/view-element/view-element.compo
 import {MatExpansionModule} from "@angular/material/expansion";
 import {JalaliDatetimePipe} from './pipes/jalali-datetime.pipe';
 import {JalaliDatePipe} from './pipes/jalali-date.pipe';
+import {MatChipsModule} from "@angular/material/chips";
 
 const modules = [
   CommonModule,
@@ -36,7 +37,8 @@ const modules = [
   MatSelectModule,
   MatSnackBarModule,
   FlexLayoutModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatChipsModule
 ];
 
 @NgModule({

@@ -8,7 +8,7 @@ export const environment: IEnvironment = {
   appName: 'Tea Talk',
   production: false,
   baseUrl: {
-    backend: 'http://127.0.0.1:7000/'
+    backend: 'http://127.0.0.1:7001/'
   },
   userCredentials: {
     username: 'nikzad',

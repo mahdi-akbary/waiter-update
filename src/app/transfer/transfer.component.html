@@ -1,0 +1,45 @@
+<div class="container">
+  <mat-chip-list *ngIf="step !== 1">
+    <mat-chip *ngIf="formField?.sourceTableId">
+      From table {{formField?.sourceTableId}}
+    </mat-chip>
+    <mat-chip *ngIf="selectedCustomer?.name">
+      Customer {{selectedCustomer?.name}}
+    </mat-chip>
+    <mat-chip [color]="'primary'" *ngIf="formField?.destinationTableId">
+      To table {{formField?.destinationTableId}}
+    </mat-chip>
+  </mat-chip-list>
+
+
+  <mat-radio-group [(ngModel)]="selected" *ngIf="step === 1 || step === 3">
+    <mat-card *ngFor="let table of tables">
+      <mat-radio-button [value]="table.id"></mat-radio-button>
+      <span>Table {{table.id}}</span>
+    </mat-card>
+  </mat-radio-group>
+
+  <mat-radio-group [(ngModel)]="selected" *ngIf="step === 2">
+    <mat-card *ngFor="let customer of customers">
+      <mat-radio-button [value]="customer"></mat-radio-button>
+      <span class="light">Customer name:</span>
+      <span>
+        {{customer.name}}
+      </span>
+    </mat-card>
+  </mat-radio-group>
+
+</div>
+<div class="footer">
+  <button mat-raised-button color="warn" type="button" (click)="ngOnInit()">
+    CLEAR
+  </button>
+  <button *ngIf="step !== 4" mat-raised-button type="button" [disabled]="!selected"
+          (click)="next( selected)">
+    NEXT
+  </button>
+  <button *ngIf="step === 4" mat-raised-button type="submit" color="primary"
+          (click)="next( selected)">
+    SUBMIT
+  </button>
+</div>

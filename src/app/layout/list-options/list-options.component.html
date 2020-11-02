@@ -1,26 +1,20 @@
-<mat-selection-list #shoes [multiple]="false">
-  <div *ngFor="let parentOption of optionsList" [ngClass]="{'selected': parentOption.is_expanded}">
-
-    <mat-list-option [value]="parentOption.name" (click)="expandList(parentOption.urlSegment)"
-                     [selected]="parentOption.urlSegment=== currentSegment"
-                     [routerLink]="[parentOption.urlSegment]">
-      <div class="option-text">
-        <mat-icon class="option-icon">{{parentOption.icon}}</mat-icon>
-        <span [ngClass]="{'mini-state': isClosed}">{{parentOption.name}}</span>
-      </div>
-      <mat-icon *ngIf="parentOption.children" class="icon-status" [ngClass]="{'mini-state': isClosed}">
-        {{parentOption.is_expanded ? 'expand_more' : 'chevron_right'}}
-      </mat-icon>
-    </mat-list-option>
-    <div class="child-option" [ngClass]="{'expand': parentOption.is_expanded}">
-      <mat-list-option class="option " *ngFor="let childOption of parentOption.children"
-                       [selected]="childOption.urlSegment=== currentSegment"
-                       [routerLink]="[parentOption.urlSegment, childOption.urlSegment]">
-        <div [ngClass]="{'padding-left': !isClosed, 'option-text': true}">
-          <mat-icon class="option-icon">{{parentOption.icon}}</mat-icon>
-          <span [ngClass]="{'mini-state': isClosed}">{{childOption.name}}</span>
-        </div>
-      </mat-list-option>
-    </div>
+<div class="container">
+  <div class="row">
+    <button mat-mini-fab matTooltip="Transfer" color="{{(selectedPath === 'transfer') ? 'warn' : '#fff'}}"
+            (click)="redirectTo('transfer')">
+      <mat-icon>directions_walk</mat-icon>
+    </button>
+    <button mat-mini-fab matTooltip="Tables" color="{{(selectedPath === 'tables') ? 'warn' : '#fff'}}"
+            (click)="redirectTo('tables')">
+      <mat-icon>tablet</mat-icon>
+    </button>
+    <button mat-mini-fab matTooltip="Customers" color="{{(selectedPath === 'customers') ? 'warn' : '#fff'}}"
+            (click)="redirectTo('customers')">
+      <mat-icon>person</mat-icon>
+    </button>
+    <button mat-mini-fab matTooltip="Items" color="{{(selectedPath === 'items') ? 'warn' : '#fff'}}"
+            (click)="redirectTo('items')">
+      <mat-icon>view_column</mat-icon>
+    </button>
   </div>
-</mat-selection-list>
+</div>

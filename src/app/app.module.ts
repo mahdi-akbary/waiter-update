@@ -10,7 +10,6 @@ import {MatListModule} from '@angular/material/list';
 import {MatTreeModule} from '@angular/material/tree';
 import {LayoutComponent} from './layout/layout.component';
 import {ListOptionsComponent} from './layout/list-options/list-options.component';
-import {BannerComponent} from './layout/banner/banner.component';
 import {HeaderComponent} from './layout/header/header.component';
 import {HttpService} from './services/http.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -19,14 +18,20 @@ import {AuthService} from './services/auth.service';
 import {FormValidationService} from './services/form-validation.service';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {StaticDataService} from './services/static-data.service';
+import {SharedModule} from "./shared/shared.module";
+import {TransferService} from "./transfer/transfer.service";
+import {TransferComponent} from "./transfer/transfer.component";
+import {TableComponent} from "./table/table.component";
+import {TableService} from "./table/table.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     ListOptionsComponent,
-    BannerComponent,
     HeaderComponent,
+    TransferComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
@@ -38,12 +43,15 @@ import {StaticDataService} from './services/static-data.service';
     MatIconModule,
     MatListModule,
     MatTreeModule,
+    SharedModule,
     FlexLayoutModule,
   ],
   providers: [
     HttpService,
     AuthService,
     FormValidationService,
+    TransferService,
+    TableService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
