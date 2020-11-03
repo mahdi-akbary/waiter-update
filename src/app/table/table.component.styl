@@ -33,3 +33,49 @@
 .light
   color #333
   font-style italic
+.order
+  margin 10px 56px
+  display flex
+  .category
+    width 35%
+    position relative
+    .button
+      display flex
+      flex-flow column
+      position sticky
+      top 80px
+      width 100%
+    button
+      width 90%
+      margin 5px
+  .item
+    width 65%
+    display flex
+    justify-content space-between
+    flex-flow column
+    .left
+      width 50%
+    .right
+      width 50%
+      display flex
+      justify-content flex-end
+      button
+        margin 0 10px
+      .count
+        display flex
+        justify-content center
+        align-items center
+        margin 0 15px
+        width 40px
+        height 40px
+        border 1px solid #333
+        border-radius 50px
+        font-weight 600
+      .background
+        border unset
+        background-color #ffccbc
+    mat-card
+      margin-left unset
+      margin-right  unset
+.position-absolute
+  position absolute

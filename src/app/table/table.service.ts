@@ -20,4 +20,15 @@ export class TableService {
   transfer(data): Observable<any> {
     return this.httpService.post(this.url + `/transfer`, data);
   }
+
+  categories(): Observable<any> {
+    return this.httpService.get(`server/category`);
+  }
+
+  items(): Observable<any> {
+    return this.httpService.get(`server/item`);
+  }
+  submit(data): Observable<any> {
+    return this.httpService.post(`server/submit`, data);
+  }
 }

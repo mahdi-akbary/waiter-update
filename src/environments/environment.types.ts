@@ -3,6 +3,7 @@ export interface IEnvironment {
   production?: boolean;
   baseUrl: {
     backend: string;
+    frontEnd: string;
   }
   userCredentials?: {
     username: string;

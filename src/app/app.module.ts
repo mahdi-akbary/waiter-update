@@ -23,6 +23,7 @@ import {TransferService} from "./transfer/transfer.service";
 import {TransferComponent} from "./transfer/transfer.component";
 import {TableComponent} from "./table/table.component";
 import {TableService} from "./table/table.service";
+import {SummaryDialogComponent} from "./table/summary-dialog/summary-dialog.component";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {TableService} from "./table/table.service";
     ListOptionsComponent,
     HeaderComponent,
     TransferComponent,
-    TableComponent
+    TableComponent,
+    SummaryDialogComponent
   ],
   imports: [
     BrowserModule,
