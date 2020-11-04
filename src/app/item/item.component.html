@@ -1,0 +1,54 @@
+<div class="container">
+  <mat-chip-list class="position-absolute">
+    <mat-chip>
+      From table {{tableService.selectedTable}}
+    </mat-chip>
+    <mat-chip>
+      Customer: {{customerService.selectedCustomer}}
+    </mat-chip>
+  </mat-chip-list>
+
+  <div class="order">
+    <div class="category">
+      <div class="button">
+        <a *ngFor="let category of categories" [href]="urlLink + '/items#category_'+ category?.id">
+          <button mat-raised-button type="button">{{category?.name_dari}}</button>
+        </a>
+      </div>
+    </div>
+    <div class="item">
+      <mat-card *ngFor="let item of items" [id]="'category_' + item?.category_id">
+        <div class="left">
+          <button mat-mini-fab color="primary" [disabled]="item.quantity < 1" (click)="addNotes(item)">
+            <mat-icon style="color: #fff">
+              {{(item.quantity > 0 && item.notes) ? 'border_color' : 'edit'}}
+            </mat-icon>
+          </button>
+          <span class="light">{{item.name_english}}</span>
+          <span class="light">{{item.name_dari}}</span>
+        </div>
+        <div class="right">
+          <div class="count" [ngClass]="{'background': item.quantity > 0}">
+            {{item?.quantity}}
+          </div>
+          <button mat-mini-fab color="#fff" (click)="updateQuantity(item, -1)">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <button mat-mini-fab color="#fff" (click)="updateQuantity(item, 1)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+</div>
+<div class="footer">
+  <button mat-raised-button color="warn" type="button" (click)="clear()">
+    CLEAR
+  </button>
+  <button mat-raised-button type="submit" color="primary" [disabled]="!isEnabled"
+          (click)="preview()">
+    REVIEW
+  </button>
+</div>

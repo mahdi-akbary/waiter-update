@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <span class="user">
-      Mahdi Nikzad (Logout)
+      {{authService?.user?.name}} (<span class="logout" (click)="logout()">Logout</span>)
     </span>
     <img src="../../../assets/images/logo.png" alt="logo">
   </div>

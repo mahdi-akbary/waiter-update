@@ -1,15 +1,15 @@
 <div class="main" fxLayout="row" fxLayoutAlign="space-around center">
-  <form *ngIf="form" [formGroup]="form" fxLayout="column" fxFlex="20">
+  <form *ngIf="form" [formGroup]="form" fxLayout="column" (submit)="form.valid && submit(form.value)">
     <mat-form-field appearance="outline">
       <mat-label>Username</mat-label>
-      <input matInput formControlName="username" type="text">
+      <input matInput formControlName="username" type="text" autocomplete="off">
       <mat-error *ngIf="form.get('username')?.errors?.required">
         {{formValidationService.required.message()}}
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
-      <input matInput formControlName="password" type="password">
+      <input matInput formControlName="password" type="password" autocomplete="off">
       <mat-error *ngIf="form.get('password')?.errors?.required">
         {{formValidationService.required.message()}}
       </mat-error>

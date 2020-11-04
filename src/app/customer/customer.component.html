@@ -1,0 +1,35 @@
+<div class="container">
+  <mat-chip-list>
+    <mat-chip>
+      From table {{tableService?.selectedTable}}
+    </mat-chip>
+    <mat-chip *ngIf="selected">
+      Customer: {{selected}}
+    </mat-chip>
+  </mat-chip-list>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Customer name</mat-label>
+    <input matInput type="text" [(ngModel)]="newCustomer">
+  </mat-form-field>
+
+  <mat-radio-group [(ngModel)]="selected">
+    <mat-card *ngFor="let customer of customers">
+      <mat-radio-button [value]="customer?.name"></mat-radio-button>
+      <span class="light">Customer name:</span>
+      <span>
+        {{customer.name}}
+      </span>
+    </mat-card>
+  </mat-radio-group>
+
+</div>
+<div class="footer">
+  <button mat-raised-button color="warn" type="button" (click)="clear()">
+    CLEAR
+  </button>
+  <button mat-raised-button type="button" [disabled]="!selected && !newCustomer"
+          (click)="next( selected)">
+    NEXT
+  </button>
+</div>

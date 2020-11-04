@@ -1,84 +1,12 @@
 <div class="container">
-  <mat-chip-list *ngIf="step !== 1" [ngClass]="{'position-absolute': step === 3}">
-    <mat-chip *ngIf="selectedTable">
-      From table {{selectedTable}}
-    </mat-chip>
-    <mat-chip *ngIf="selectedCustomer">
-      Customer: {{selectedCustomer}}
-    </mat-chip>
-  </mat-chip-list>
-
-
-  <mat-radio-group [(ngModel)]="selected" *ngIf="step === 1">
+  <mat-radio-group [(ngModel)]="selected" >
     <mat-card *ngFor="let table of tables">
       <mat-radio-button [value]="table.id"></mat-radio-button>
       <span>Table {{table.id}}</span>
     </mat-card>
   </mat-radio-group>
-
-  <mat-form-field appearance="outline" *ngIf="step === 2">
-    <mat-label>Customer name</mat-label>
-    <input matInput type="text" [(ngModel)]="selectedCustomer">
-  </mat-form-field>
-
-  <mat-radio-group [(ngModel)]="selectedCustomer" *ngIf="step === 2">
-    <mat-card *ngFor="let customer of customers">
-      <mat-radio-button [value]="customer?.name"></mat-radio-button>
-      <span class="light">Customer name:</span>
-      <span>
-        {{customer.name}}
-      </span>
-    </mat-card>
-  </mat-radio-group>
-  <div class="order" *ngIf="step === 3">
-    <div class="category">
-      <div class="button">
-        <a *ngFor="let category of categories" [href]="urlLink + '/tables#category_'+ category?.id">
-          <button mat-raised-button type="button">{{category?.name_dari}}</button>
-        </a>
-      </div>
-    </div>
-    <div class="item">
-      <mat-card *ngFor="let item of items" [id]="'category_' + item?.category_id">
-        <div class="left">
-          <button mat-mini-fab color="primary" [disabled]="item.quantity < 1">
-            <mat-icon style="color: #fff">
-              {{item.quantity < 1 ? 'edit' : 'border_color'}}
-            </mat-icon>
-          </button>
-          <span class="light">{{item.name_english}}</span>
-          <span class="light">{{item.name_dari}}</span>
-        </div>
-        <div class="right">
-          <div class="count" [ngClass]="{'background': item.quantity > 0}">
-            {{item?.quantity}}
-          </div>
-          <button mat-mini-fab color="#fff" (click)="updateQuantity(item, -1)">
-            <mat-icon>remove</mat-icon>
-          </button>
-          <button mat-mini-fab color="#fff" (click)="updateQuantity(item, 1)">
-            <mat-icon>add</mat-icon>
-          </button>
-        </div>
-      </mat-card>
-    </div>
-  </div>
-
 </div>
 <div class="footer">
-  <button *ngIf="step !== 1" mat-raised-button color="warn" type="button" (click)="ngOnInit()">
-    CLEAR
-  </button>
-  <button *ngIf="step == 1" mat-raised-button type="button" [disabled]="!selected"
-          (click)="next(selected)">
-    NEXT
-  </button>
-  <button *ngIf="step == 2" mat-raised-button type="button" [disabled]="!selectedCustomer"
-          (click)="next( selected)">
-    NEXT
-  </button>
-  <button *ngIf="step === 3" mat-raised-button type="submit" color="primary"
-          (click)="preview()">
-    REVIEW
-  </button>
+  <button mat-raised-button type="button" [disabled]="!selected"
+          (click)="next(selected)">NEXT</button>
 </div>

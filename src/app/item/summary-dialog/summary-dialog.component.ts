@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {TableService} from "../table.service";
+import {ItemService} from "../item.service";
 
 @Component({
   selector: 'app-summary-dialog',
@@ -11,16 +11,15 @@ export class SummaryDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<SummaryDialogComponent>,
-    private tableService: TableService,
+    private itemService: ItemService,
     @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
   }
 
   submit() {
-    this.tableService.submit(this.data).subscribe(res => {
+    this.itemService.submit(this.data).subscribe(res => {
       this.dialogRef.close(true);
     })
   }

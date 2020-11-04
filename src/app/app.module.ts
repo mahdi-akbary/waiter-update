@@ -21,9 +21,15 @@ import {StaticDataService} from './services/static-data.service';
 import {SharedModule} from "./shared/shared.module";
 import {TransferService} from "./transfer/transfer.service";
 import {TransferComponent} from "./transfer/transfer.component";
+import {SummaryDialogComponent} from "./item/summary-dialog/summary-dialog.component";
+import {NoteDialogComponent} from "./item/note-dialog/note-dialog.component";
+import {CustomerComponent} from "./customer/customer.component";
+import {CustomerService} from "./customer/customer.service";
+import {ItemComponent} from "./item/item.component";
+import {ItemService} from "./item/item.service";
 import {TableComponent} from "./table/table.component";
 import {TableService} from "./table/table.service";
-import {SummaryDialogComponent} from "./table/summary-dialog/summary-dialog.component";
+import {AuthGuardService} from "./services/auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -32,8 +38,11 @@ import {SummaryDialogComponent} from "./table/summary-dialog/summary-dialog.comp
     ListOptionsComponent,
     HeaderComponent,
     TransferComponent,
-    TableComponent,
-    SummaryDialogComponent
+    ItemComponent,
+    SummaryDialogComponent,
+    NoteDialogComponent,
+    CustomerComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +62,9 @@ import {SummaryDialogComponent} from "./table/summary-dialog/summary-dialog.comp
     AuthService,
     FormValidationService,
     TransferService,
+    ItemService,
     TableService,
+    CustomerService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
@@ -61,6 +72,7 @@ import {SummaryDialogComponent} from "./table/summary-dialog/summary-dialog.comp
       multi: true
     },
     StaticDataService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
